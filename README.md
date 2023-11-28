@@ -12,3 +12,12 @@ Google Home Camera
 Wyze Camera
 - Wyze Cam v3 Pro
 - Wyze Cam Pan v3
+
+File Structure Description
+------------------------------------------------------------------------------------------------------------------
+Core: This directory contains the control loop files and functions for the entire app.
+    main.cpp - This file contains the entry point for the application
+IO: This directory contains the input/output file and functions for interfacing with external applications.
+    Hardware: This directory contains IO for hardware related interfaces.
+    Software: This directory contains IO for software related interfaces.
+Networking: This directory contains the necessary files and functions for interfacing with IOT applications.
