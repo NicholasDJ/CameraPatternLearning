@@ -10,25 +10,16 @@ EXECUTABLE_NAME=run
 
 # Define Paths
 DIR_PATH=$(shell pwd)
-SRC_PATH=$(shell pwd)/src
 BUILD_PATH=$(DIR_PATH)/build
-OUTPUT_PATH=$(BUILD_PATH)/exe
-OBJ_PATH=$(BUILD_PATH)/bin
-CORE_PATH=$(SRC_PATH)/Core
-IO_PATH=$(SRC_PATH)/IO
+SRC=src
+BUILD=build
+EXE=$(BUILD)/exe/
+OBJ=$(BUILD)/bin/
+CORE_PATH=$(SRC)/Core
+IO_PATH=$(SRC)/IO
 IO_HARDWARE_PATH=$(IO_PATH)/Hardware
 IO_SOFTWARE_PATH=$(IO_PATH)/Software
-NETWORKING_PATH=$(SRC_PATH)/Networking
-
-# Make build folder
-$(shell mkdir -p $(BUILD_PATH))
-$(shell mkdir -p $(OUTPUT_PATH))
-$(shell mkdir -p $(OBJ_PATH))
-
-# Folders
-SRC=SRC_PATH
-BIN=OBJ_PATH
-OBJ=$(BIN)/obj
+NETWORKING_PATH=$(SRC)/Networking
 
 # Files
 SOURCE_FILES=\
@@ -41,7 +32,7 @@ SOURCE_FILES=\
 #		Should be fairly static		 #
 ##########################################
 #	 http://www.gnu.org/software/make/manual/make.html#Substitution-Refs
-EXECUTABLE_FILES = $(EXECUTABLE_NAME:%=$(BIN)/%)
+EXECUTABLE_FILES = $(EXECUTABLE_NAME:%=$(EXE)/%)
 OBJECT_FILES	 = $(SOURCE_FILES:%.cpp=$(OBJ)/%.o)
 
 build: $(EXECUTABLE_FILES)

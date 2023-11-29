@@ -1,7 +1,7 @@
 /**
- * @file Software.cpp
+ * @file Internet.cpp
  * @author Nick Jagdeo
- * @brief Software interface
+ * @brief Internet interface
  * @version 0.1
  * @date 2023-11-28
  * 
@@ -12,5 +12,4 @@
 /* Defines */
 
 /* Includes */
-#include "Software.h"
 
