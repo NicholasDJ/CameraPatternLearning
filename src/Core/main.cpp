@@ -12,9 +12,7 @@
 /* Defines */
 
 /* Includes */
-#include "../IO/Hardware/Hardware.h"
-#include "../IO/Software/Software.h"
-#include "../Networking/Internet.h"
+#include "./main.h"
 
 
 
