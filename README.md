@@ -13,11 +13,17 @@ Wyze Camera
 - Wyze Cam v3 Pro
 - Wyze Cam Pan v3
 
+Petlibro
+- PLAF203 Camera Feeder
+
 File Structure Description
 ------------------------------------------------------------------------------------------------------------------
+src: This directory contains all the source files for the project.
 Core: This directory contains the control loop files and functions for the entire app.
-    main.cpp - This file contains the entry point for the application
+	main.cpp - This file contains the entry point for the application
 IO: This directory contains the input/output file and functions for interfacing with external applications.
-    Hardware: This directory contains IO for hardware related interfaces.
-    Software: This directory contains IO for software related interfaces.
+	Hardware: This directory contains IO for hardware related interfaces.
+	Software: This directory contains IO for software related interfaces.
 Networking: This directory contains the necessary files and functions for interfacing with IOT applications.
+
+build: This directory contains the executables and object files of the project.
