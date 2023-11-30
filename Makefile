@@ -5,24 +5,29 @@
 # Compiler options
 CC := g++
 CFLAGS := -Wall -Wextra -Wpedantic
-LDFLAGS=
+LDFLAGS=-R
 EXECUTABLE_NAME=run
 
 # Define Paths
 DIR_PATH=$(shell pwd)
 BUILD_PATH=$(DIR_PATH)/build
+EXE_PATH=$(BUILD_PATH)/exe
 SRC=src
 BUILD=build
-EXE=$(BUILD)/exe/
-OBJ=$(BUILD)/bin/
+EXE=$(BUILD)/exe
+OBJ=$(BUILD)/bin
 CORE_PATH=$(SRC)/Core
 IO_PATH=$(SRC)/IO
 IO_HARDWARE_PATH=$(IO_PATH)/Hardware
 IO_SOFTWARE_PATH=$(IO_PATH)/Software
 NETWORKING_PATH=$(SRC)/Networking
 
+# Make directories
+$(shell mkdir -p $(EXE_PATH))
+
 # Files
 SOURCE_FILES=\
+	$(wildcard $(SRC)/*.cpp) \
 	$(wildcard $(CORE_PATH)/*.cpp) \
 	$(wildcard $(IO_HARDWARE_PATH)/*.cpp) \
 	$(wildcard $(IO_SOFTWARE_PATH)/*.cpp) \
@@ -46,6 +51,10 @@ clean:
 # Build
 # http://www.gnu.org/software/make/manual/make.html#Automatic-Variables
 $(EXECUTABLE_FILES): $(OBJECT_FILES)
+	$(info $$OBJECT_FILES is [${OBJECT_FILES}])
+	$(info $$EXECUTABLE_FILES is [${EXECUTABLE_FILES}])
+	$(info $$@ is [${@}])
+	$(info $$^ is [${^}])
 	@$(CC) $(LDFLAGS) -o $@ $^
 	@echo "Build successful!"
 
@@ -54,5 +63,8 @@ $(EXECUTABLE_FILES): $(OBJECT_FILES)
 # http://www.gnu.org/software/make/manual/make.html#index-_0024_0028_0040D_0029
 $(OBJECT_FILES): $(OBJ)/%.o: %.cpp
 	@echo Compiling $<
+	$(info $$@D is [${@D}])
+	$(info $$@ is [${@}])
+	$(info $$< is [${<}])
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -o $@ $<
