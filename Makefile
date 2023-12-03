@@ -5,7 +5,7 @@
 # Compiler options
 CC := g++
 CFLAGS := -Wall -Wextra -Wpedantic
-LDFLAGS=-R
+LDFLAGS=
 EXECUTABLE_NAME=run
 
 # Define Paths
@@ -51,10 +51,7 @@ clean:
 # Build
 # http://www.gnu.org/software/make/manual/make.html#Automatic-Variables
 $(EXECUTABLE_FILES): $(OBJECT_FILES)
-	$(info $$OBJECT_FILES is [${OBJECT_FILES}])
-	$(info $$EXECUTABLE_FILES is [${EXECUTABLE_FILES}])
-	$(info $$@ is [${@}])
-	$(info $$^ is [${^}])
+	$(shell mv $(shell find ./ -name '*.o' ) $(OBJECT_FILES))
 	@$(CC) $(LDFLAGS) -o $@ $^
 	@echo "Build successful!"
 
@@ -63,8 +60,5 @@ $(EXECUTABLE_FILES): $(OBJECT_FILES)
 # http://www.gnu.org/software/make/manual/make.html#index-_0024_0028_0040D_0029
 $(OBJECT_FILES): $(OBJ)/%.o: %.cpp
 	@echo Compiling $<
-	$(info $$@D is [${@D}])
-	$(info $$@ is [${@}])
-	$(info $$< is [${<}])
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) -o $@ $<
+	@$(CC) $(CFLAGS) -c $<
