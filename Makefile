@@ -51,14 +51,14 @@ clean:
 # Build
 # http://www.gnu.org/software/make/manual/make.html#Automatic-Variables
 $(EXECUTABLE_FILES): $(OBJECT_FILES)
-	$(shell mv $(shell find ./ -name '*.o' ) $(OBJECT_FILES))
 	@$(CC) $(LDFLAGS) -o $@ $^
 	@echo "Build successful!"
 
 # Compile
 # http://www.gnu.org/software/make/manual/make.html#Static-Pattern
 # http://www.gnu.org/software/make/manual/make.html#index-_0024_0028_0040D_0029
+# $(info $$VAR_NAME is [${VAR_NAME}]) # Print out a Makefile variable
 $(OBJECT_FILES): $(OBJ)/%.o: %.cpp
-	@echo Compiling $<
+	@echo Compiling $^
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) -c $<
+	@$(CC) $(CFLAGS) -c -o $@ $<
